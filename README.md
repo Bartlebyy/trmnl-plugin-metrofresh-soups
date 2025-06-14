@@ -32,6 +32,23 @@ npm run dev
 
 The server will run on port 3000 by default. You can change this by setting the `PORT` environment variable.
 
+## Deployment
+
+This application is configured for deployment on Netlify. The setup includes:
+
+- Serverless function configuration in `netlify.toml`
+- Express.js server wrapped in a serverless function
+- Automatic build and deployment settings
+
+To deploy:
+
+1. Push your code to a Git repository
+2. Create a new site on Netlify
+3. Connect your repository
+4. Deploy
+
+The application will be available at `https://your-site-name.netlify.app`.
+
 ## API Endpoints
 
 ### GET /soups
