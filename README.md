@@ -1,6 +1,8 @@
 # trmnl-plugin-metrofresh-soups
 
-Express service to fetch MetroFresh soups from Menuat.
+An Express service that fetches the daily soup menu from MetroFresh via Menuat.
+
+I built this because I’m a big fan of [MetroFresh](https://metrofreshatl.com), a local restaurant that updates its soup offerings daily. This plugin lets my [TRMNL](https://usetrmnl.com/) automatically show me what soups are available each day.
 
 ![Terminal Screenshot](assets/trmnl-screenshot.png)
 
