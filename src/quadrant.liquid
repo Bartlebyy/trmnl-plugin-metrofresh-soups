@@ -1,0 +1,25 @@
+<div class="layout">
+    <div class="columns">
+        <div class="column">
+            <div class="list" data-list-limit="true" data-list-max-height="200" data-list-hidden-count="true" data-list-max-columns="1">
+                {% for soup in soups %}
+                    <div class="item">
+                        <div class="meta">
+                            <span class="index">{{ forloop.index }}</span>
+                        </div>
+                        <div class="content">
+                            <div class="flex flex--row align--left gap--small">
+                                <span class="description" data-value-fit="true" data-value-fit-max-height="40">{{ soup.title }}</span>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="title_bar">
+    <span class="title">MetroFresh ATL</span>
+    <span class="instance">Daily Soups</span>
+</div>

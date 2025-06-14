@@ -1,0 +1,34 @@
+
+<div class="layout">
+    <div class="columns">
+        <div class="column">
+            <div class="list" data-list-limit="true" data-list-max-height="400" data-list-hidden-count="true" data-list-max-columns="2">
+                {% for soup in soups %}
+                    <div class="item">
+                        <div class="meta">
+                            <span class="index">{{ forloop.index }}</span>
+                        </div>
+                        <div class="content">
+                            <span class="title title--small" data-value-fit="true" data-value-fit-max-height="60">{{ soup.title }}</span>
+                            {% if soup.description %}
+                                <span class="description clamp--2" data-value-fit="true" data-value-fit-max-height="40">{{ soup.description }}</span>
+                            {% endif %}
+                            {% if soup.dietaryInfo.size > 0 %}
+                                <div class="flex gap--xsmall">
+                                    {% for info in soup.dietaryInfo %}  
+                                        <span class="label label--small label--underline">{{ info }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="title_bar">
+    <span class="title">MetroFresh ATL</span>
+    <span class="instance">Daily Soups</span>
+</div>
