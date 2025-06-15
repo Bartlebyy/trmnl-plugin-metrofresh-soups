@@ -1,3 +1,5 @@
+[build]
+  command = "npm start"
 [functions]
   external_node_modules = ["express"]
 [[redirects]]
