@@ -3,7 +3,7 @@ const serverless = require("serverless-http");
 const app = express();
 
 // Import your main application logic
-const index = require('../index');
+const index = require('../../index');
 
 // Use the same routes and middleware as your main app
 app.use('/', index);
