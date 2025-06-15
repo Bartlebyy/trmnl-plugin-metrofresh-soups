@@ -40,7 +40,7 @@ app.get('/data', async (_req, res) => {
       .replace(/\//g, '-');
 
     const url =
-      `${MENUAT_URL}?keys=[[\"soups\",\"metrofreshuptown\"]]` +
+      `${MENUAT_URL}?keys=[[\"soups\",\"metrofreshoriginal\"]]` +
       `&sort=order&format=json&template=raw&date=${today}`;
 
     const { data } = await axios.get(url);
