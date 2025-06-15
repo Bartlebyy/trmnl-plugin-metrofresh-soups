@@ -1,9 +1,9 @@
-[build]
-  command = "npm start"
 [functions]
-  external_node_modules = ["express"]
+  directory = "functions"                # folder where api.js lives
+  external_node_modules = ["express","axios"]
+
 [[redirects]]
-  force = true
-  from = "/api/*"
+  from   = "/api/*"
+  to     = "/.netlify/functions/api/:splat"
   status = 200
-  to = "/.netlify/functions/api/:splat"
+  force  = true
