@@ -10,7 +10,7 @@
                             </div>
                             <div class="content">
                                 <div class="flex flex--row align--center gap--small">
-                                    <span class="title title--small" data-value-fit="true" data-value-fit-max-height="40">{{ soup.title }}</span>
+                                    <span class="description" data-value-fit="true" data-value-fit-max-height="40">{{ soup.title }}:</span>
                                     {% if soup.description %}
                                         <span class="description" data-value-fit="true" data-value-fit-max-height="30">{{ soup.description }}</span>
                                     {% endif %}
@@ -19,7 +19,6 @@
                         </div>
                     {% endunless %}
                 {% endfor %}
-                <hr class="divider">
                 {% for sandwich in sandwiches %}
                     <div class="item">
                         <div class="meta">
@@ -27,7 +26,7 @@
                         </div>
                         <div class="content">
                             <div class="flex flex--row align--center gap--small">
-                                <span class="title title--small" data-value-fit="true" data-value-fit-max-height="40">{{ sandwich.title }}</span>
+                                <span class="description" data-value-fit="true" data-value-fit-max-height="40">{{ sandwich.title }}</span>
                                 {% if sandwich.description %}
                                     <span class="description" data-value-fit="true" data-value-fit-max-height="30">{{ sandwich.description }}</span>
                                 {% endif %}
