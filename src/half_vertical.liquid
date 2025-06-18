@@ -17,6 +17,22 @@
                         </div>
                     </div>
                 {% endfor %}
+                 <hr class="divider">
+                 {% for sandwich in sandwiches %}
+                    <div class="item">
+                        <div class="meta">
+                            <span class="index">{{ forloop.index }}</span>
+                        </div>
+                        <div class="content">
+                            <span class="title title--small" data-value-fit="true" data-value-fit-max-height="40">{{ sandwich.title }}</span>
+                            <div class="flex flex--row align--center gap--small">
+                                {% if sandwich.description %}
+                                    <span class="description clamp--2" data-value-fit="true" data-value-fit-max-height="30">{{ sandwich.description }}</span>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
             </div>
         </div>
     </div>
@@ -24,5 +40,5 @@
 
 <div class="title_bar">
     <span class="title">MetroFresh ATL</span>
-    <span class="instance">Daily Soups</span>
+    <span class="instance">Soups and Sandwiches</span>
 </div>

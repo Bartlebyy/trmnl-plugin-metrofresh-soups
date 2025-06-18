@@ -3,15 +3,33 @@
         <div class="column">
             <div class="list" data-list-limit="true" data-list-max-height="200" data-list-hidden-count="true" data-list-max-columns="1">
                 {% for soup in soups %}
+                    {% unless forloop.last %}
+                        <div class="item">
+                            <div class="meta">
+                                <span class="index">{{ forloop.index }}</span>
+                            </div>
+                            <div class="content">
+                                <div class="flex flex--row align--center gap--small">
+                                    <span class="title title--small" data-value-fit="true" data-value-fit-max-height="40">{{ soup.title }}</span>
+                                    {% if soup.description %}
+                                        <span class="description" data-value-fit="true" data-value-fit-max-height="30">{{ soup.description }}</span>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    {% endunless %}
+                {% endfor %}
+                <hr class="divider">
+                {% for sandwich in sandwiches %}
                     <div class="item">
                         <div class="meta">
                             <span class="index">{{ forloop.index }}</span>
                         </div>
                         <div class="content">
                             <div class="flex flex--row align--center gap--small">
-                                <span class="title title--small" data-value-fit="true" data-value-fit-max-height="40">{{ soup.title }}</span>
-                                {% if soup.description %}
-                                    <span class="description" data-value-fit="true" data-value-fit-max-height="30">{{ soup.description }}</span>
+                                <span class="title title--small" data-value-fit="true" data-value-fit-max-height="40">{{ sandwich.title }}</span>
+                                {% if sandwich.description %}
+                                    <span class="description" data-value-fit="true" data-value-fit-max-height="30">{{ sandwich.description }}</span>
                                 {% endif %}
                             </div>
                         </div>
@@ -24,5 +42,5 @@
 
 <div class="title_bar">
     <span class="title">MetroFresh ATL</span>
-    <span class="instance">Daily Soups</span>
+    <span class="instance">Daily Soups and Sandwiches</span>
 </div>

@@ -20,14 +20,19 @@ function buildDietaryInfo(s) {
   return info;
 }
 
-function formatSoups(soups) {
-  if (!soups?.length) return { soups: [] };
+function cleanHtml(html) {
+  if (!html) return null;
+  return html.replace(/<[^>]*>/g, '').trim();
+}
+
+function formatItems(items, type) {
+  if (!items?.length) return { [type]: [] };
   return {
-    soups: soups
+    [type]: items
       .filter(s => !s.hide && s.title)
       .map(s => ({
         title:        s.title,
-        description:  s.description?.trim() || null,
+        description:  cleanHtml(s.description),
         dietaryInfo:  buildDietaryInfo(s),
       })),
   };
@@ -39,15 +44,21 @@ app.get('/data', async (_req, res) => {
       .toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: 'numeric' })
       .replace(/\//g, '-');
 
-    const url =
-      `${MENUAT_URL}?keys=[[\"soups\",\"metrofreshoriginal\"]]` +
-      `&sort=order&format=json&template=raw&date=${today}`;
+    const [soupsResponse, sandwichesResponse] = await Promise.all([
+      axios.get(`${MENUAT_URL}?keys=[[\"soups\",\"metrofreshoriginal\"]]&sort=order&format=json&template=raw&date=${today}`),
+      axios.get(`${MENUAT_URL}?keys=[[\"sandwiches\",\"metrofreshoriginal\"]]&sort=order&format=json&template=raw&date=${today}`)
+    ]);
 
-    const { data } = await axios.get(url);
-    res.json(formatSoups(data));
+    const formattedSoups = formatItems(soupsResponse.data, 'soups');
+    const formattedSandwiches = formatItems(sandwichesResponse.data, 'sandwiches');
+
+    res.json({
+      ...formattedSoups,
+      ...formattedSandwiches
+    });
   } catch (err) {
-    console.error('Error fetching soups:', err);
-    res.status(500).json({ error: 'Error fetching soups' });
+    console.error('Error fetching menu items:', err);
+    res.status(500).json({ error: 'Error fetching menu items' });
   }
 });
 
